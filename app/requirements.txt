@@ -2,3 +2,4 @@ pandas
 Flask
 scikit-learn
 pytest
+waitress
