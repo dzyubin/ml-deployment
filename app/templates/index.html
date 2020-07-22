@@ -5,7 +5,7 @@
             Naive Bayes Classification
         </title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -14,7 +14,7 @@
     </head>
     <body style="background-image: url('static/img/2.jpeg');">
      
-    <div class="style-form-within">
+    <div class="container">
     
         <form id="form" method="post" action="{{ url_for('Prediction') }}">
             <div class="form-group">
@@ -26,11 +26,38 @@
             <button id="button-a" type="submit" class="btn btn-primary">Submit</button>
     
         </form>
+
+        <p>Response: </p>
+        <p id='response'>Loading...</p>
     
     </div>
       <script>
           $(document).ready(
             function(){
+
+              $('#response').text('Loading...')
+              $.ajax({
+                url: "{{url_for('Prediction')}}",
+                method: 'post',
+                data: {
+                  text_field: 'vaccine'
+                }
+              }).done(function(res) {
+                console.log(res)
+                console.log('done')
+                $('#response').text(res.prediction)
+              }).fail(function(err) {
+                console.log(err)
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  showConfirmButton: true,
+                  timer: 20000
+                })
+                $('#response').text('')
+              })
+
+
               $("#button-a").attr('disabled', true);
               $("#text_field").keyup(
                 function(){
@@ -47,7 +74,6 @@
           $("#button-a").click(
             function(){
               Swal.fire({
-              
                 icon: 'success',
                 title: 'Submitted',
                 showConfirmButton: true,
