@@ -9,6 +9,8 @@ import pickle
 import datetime
 import json
 
+from mnist import Mnist
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -42,6 +44,9 @@ def Prediction():
         'created_at': datetime.datetime.now()
     }
     return jsonify(response)
+
+@app.route('/mnist')
+Mnist()
 
 if __name__=='__main__':
    app.run(debug=True)
