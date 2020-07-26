@@ -2,3 +2,10 @@
 *.ipynb
 
 start.bat
+
+app/__pycache__/
+app/mnist_model.pkl
+batch_scripts
+conda_activate.bat
+conda_test.bat
+mnist_model.pkl

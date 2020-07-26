@@ -1,3 +1,6 @@
+import os
+import psycopg2
+
 from flask import Flask, request
 from flask import render_template, jsonify, url_for
 
@@ -9,7 +12,7 @@ import pickle
 import datetime
 import json
 
-from mnist import Mnist
+# import mnist
 
 app = Flask(__name__)
 
@@ -46,7 +49,21 @@ def Prediction():
     return jsonify(response)
 
 @app.route('/mnist')
-Mnist()
+def Mnist():
+    conn = psycopg2.connect(host="ec2-54-75-244-161.eu-west-1.compute.amazonaws.com",database="d790i0bj2ikkeq",user="qumbrzpxinjjas",password="157959a5cf68334fcb38a2e3df6f65b97e82186eaa9c21ce6e80c6e1a4aff253")
+    cur = conn.cursor()
+    
+    # cur.execute('select model from models')
+    # bytes_model = cur.fetchone()
+    # model = pickle.loads(bytes_model[0])
+    # print(model.get_params())
+        
+    # close communication with the PostgreSQL database server
+    cur.close()
+    # commit the changes
+    conn.commit()
+
+    return render_template('mnist.html')
 
 if __name__=='__main__':
    app.run(debug=True)
