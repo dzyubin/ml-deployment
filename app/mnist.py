@@ -3,7 +3,7 @@ import pickle
 
 import tensorflow as tf
 from tensorflow import keras
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 # from sklearn.datasets import fetch_openml
 # import numpy as np
