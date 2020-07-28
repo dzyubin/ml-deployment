@@ -12,7 +12,7 @@ import pickle
 import datetime
 import json
 
-# import mnist
+import mnist
 
 app = Flask(__name__)
 
@@ -50,8 +50,9 @@ def Prediction():
 
 @app.route('/mnist')
 def Mnist():
-    conn = psycopg2.connect(host="ec2-54-75-244-161.eu-west-1.compute.amazonaws.com",database="d790i0bj2ikkeq",user="qumbrzpxinjjas",password="157959a5cf68334fcb38a2e3df6f65b97e82186eaa9c21ce6e80c6e1a4aff253")
-    cur = conn.cursor()
+    # mnist.mnist()
+    # conn = psycopg2.connect(host="ec2-54-75-244-161.eu-west-1.compute.amazonaws.com",database="d790i0bj2ikkeq",user="qumbrzpxinjjas",password="157959a5cf68334fcb38a2e3df6f65b97e82186eaa9c21ce6e80c6e1a4aff253")
+    # cur = conn.cursor()
     
     # cur.execute('select model from models')
     # bytes_model = cur.fetchone()
@@ -59,11 +60,15 @@ def Mnist():
     # print(model.get_params())
         
     # close communication with the PostgreSQL database server
-    cur.close()
+    # cur.close()
     # commit the changes
-    conn.commit()
+    # conn.commit()
 
     return render_template('mnist.html')
+
+@app.route('/fashion_mnist')
+def Fashion_mnist():
+    return render_template('fashion_mnist.html')
 
 if __name__=='__main__':
    app.run(debug=True)

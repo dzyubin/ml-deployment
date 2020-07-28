@@ -3,3 +3,5 @@ Flask
 scikit-learn
 pytest
 gunicorn
+psycopg2
+tensorflow
