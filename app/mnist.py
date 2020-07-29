@@ -1,7 +1,7 @@
 from flask import render_template
 import pickle
 
-# import tensorflow as tf
+import tensorflow as tf
 # from tensorflow import keras
 # import matplotlib.pyplot as plt
 
