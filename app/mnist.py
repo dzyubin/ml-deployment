@@ -23,7 +23,9 @@ from tensorflow import keras
 # print(mnist_model)
 
 (X_train_full, y_train_full), (X_test, y_test) = keras.datasets.mnist.load_data()
-#X_train_full.shape
+print('\n\n\n')
+print(X_train_full.shape)
+print('\n\n\n')
 
 #X_valid, X_train = X_train_full[:5000] / 255., X_train_full[5000:] / 255.
 #y_valid, y_train = y_train_full[:5000], y_train_full[5000:]
