@@ -2,7 +2,7 @@ from flask import render_template
 import pickle
 
 import tensorflow as tf
-# from tensorflow import keras
+from tensorflow import keras
 # import matplotlib.pyplot as plt
 
 # from sklearn.datasets import fetch_openml
@@ -22,7 +22,7 @@ import tensorflow as tf
 # mnist_model = pickle.load(open("mnist_model.pkl", "rb"))
 # print(mnist_model)
 
-#(X_train_full, y_train_full), (X_test, y_test) = keras.datasets.mnist.load_data()
+(X_train_full, y_train_full), (X_test, y_test) = keras.datasets.mnist.load_data()
 #X_train_full.shape
 
 #X_valid, X_train = X_train_full[:5000] / 255., X_train_full[5000:] / 255.
