@@ -31,7 +31,7 @@ X_valid, X_train = X_train_full[:5000] / 255., X_train_full[5000:] / 255.
 y_valid, y_train = y_train_full[:5000], y_train_full[5000:]
 X_test = X_test / 255.
 
-model = keras.models.load_model("models/my_mnist_model.h5") # rollback to best model
+# model = keras.models.load_model("models/my_mnist_model.h5") # rollback to best model
 
 #X_new = X_test[:3]
 #y_proba = model.predict(X_new)
