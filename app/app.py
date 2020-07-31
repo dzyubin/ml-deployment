@@ -12,7 +12,7 @@ import pickle
 import datetime
 import json
 
-# import mnist
+import mnist
 
 app = Flask(__name__)
 
