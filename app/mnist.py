@@ -22,7 +22,7 @@ from tensorflow import keras
 # mnist_model = pickle.load(open("mnist_model.pkl", "rb"))
 # print(mnist_model)
 
-# (X_train_full, y_train_full), (X_test, y_test) = keras.datasets.mnist.load_data()
+(X_train_full, y_train_full), (X_test, y_test) = keras.datasets.mnist.load_data()
 # print('\n\n\n')
 # print(X_train_full.shape)
 # print('\n\n\n')
