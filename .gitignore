@@ -9,3 +9,5 @@ batch_scripts
 conda_activate.bat
 conda_test.bat
 mnist_model.pkl
+
+data/aclImdb_v1.tar.gz

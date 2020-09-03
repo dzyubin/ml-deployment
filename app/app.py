@@ -12,7 +12,8 @@ import pickle
 import datetime
 import json
 
-import mnist
+# import mnist
+import word2vec
 
 app = Flask(__name__)
 
@@ -69,6 +70,10 @@ def Mnist():
 @app.route('/fashion_mnist')
 def Fashion_mnist():
     return render_template('fashion_mnist.html')
+
+@app.route('/word2vec')
+def Word2vec():
+    return render_template('word2vec.html')
 
 if __name__=='__main__':
    app.run(debug=True)

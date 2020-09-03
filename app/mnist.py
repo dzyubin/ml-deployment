@@ -31,7 +31,7 @@ from tensorflow import keras
 # y_valid, y_train = y_train_full[:5000], y_train_full[5000:]
 # X_test = X_test / 255.
 
-model = keras.models.load_model("models/my_mnist_model.h5") # rollback to best model
+# model = keras.models.load_model("models/my_mnist_model.h5") # rollback to best model
 
 # y_proba = model.predict(some_digit)
 # print(y_proba.round(2))

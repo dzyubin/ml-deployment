@@ -5,3 +5,4 @@ pytest
 gunicorn
 psycopg2
 tensorflow-cpu
+spacy=2.0.12
