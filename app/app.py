@@ -1,5 +1,5 @@
 import os
-import psycopg2
+# import psycopg2
 
 from flask import Flask, request
 from flask import render_template, jsonify, url_for
