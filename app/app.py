@@ -14,6 +14,7 @@ import json
 
 # import mnist
 import word2vec
+from word2vec import Getmostsim
 
 app = Flask(__name__)
 
@@ -74,6 +75,10 @@ def Fashion_mnist():
 @app.route('/word2vec')
 def Word2vec():
     return render_template('word2vec.html')
+
+@app.route('/get_most_similar', methods=['POST'])
+def Getmostsimilar():
+    return Getmostsim(request)
 
 if __name__=='__main__':
    app.run(debug=True)

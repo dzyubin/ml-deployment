@@ -6,6 +6,9 @@
 # import spacy  # For preprocessing
 # import en_core_web_sm
 
+from flask import jsonify
+import datetime
+
 # import logging  # Setting up the loggings to monitor gensim
 # logging.basicConfig(format="%(levelname)s - %(asctime)s: %(message)s", datefmt= '%H:%M:%S', level=logging.INFO)
 
@@ -86,7 +89,39 @@ from gensim.models import Word2Vec
 # w2v_model.init_sims(replace=True)
 
 w2v_model = Word2Vec.load('./data/w2v_simpsons.model')
-print('sdfsfd')
-print(w2v_model.wv.most_similar(positive=["homer"]))
+# print('sdfsfd')
+# print(w2v_model.wv.most_similar(positive=["homer"]))
 
-print(w2v_model.wv.most_similar(positive=["bart"]))
+# print(w2v_model.wv.most_similar(positive=["bart"]))
+
+def Getmostsim(request):
+    #fetch input from form + loading model
+    from_form = request.form['most_similar_to']
+    # with open('data/news_train.pkl', 'rb') as f:
+    #     news_train = pickle.load(f)
+    # with open('models/model.pkl', 'rb') as f:
+    #     clf = pickle.load(f)
+    # with open('prediction_map.json', 'r') as pred_map:
+    #     prediction_map = json.load(pred_map)
+
+    # count_vect = CountVectorizer()
+    # tfidf_transformer = TfidfTransformer()
+    # cv_fit = count_vect.fit_transform(news_train.data)
+    # X_train_tfidf = tfidf_transformer.fit_transform(cv_fit)
+
+    # count_vect_data = count_vect.transform([from_form])
+    # tfidf_transformer_data = tfidf_transformer.transform(count_vect_data)
+    # prediction = clf.predict(tfidf_transformer_data)
+    # prediction_name = prediction_map.get(str(prediction[0]), "couldn't find name")
+
+    print(from_form)
+    most_similar = w2v_model.wv.most_similar(positive=[from_form])
+  
+    response = {
+        'status': 200,
+        'prediction': most_similar,
+        'created_at': datetime.datetime.now()
+    }
+    # print(from_form)
+    return jsonify(response)
+    # return jsonify(['sdf'])
