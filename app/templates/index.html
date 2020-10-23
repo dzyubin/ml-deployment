@@ -15,16 +15,18 @@
     <body style="background-image: url('static/img/2.jpeg');">
      
     <div class="container">
-      <a class="btn btn-primary" href="{{url_for('Word2vec')}}">word2vec</a>
-      <!-- <a class="btn btn-primary" href="{{url_for('Mnist')}}">Mnist</a> -->
-      <!-- <a class="btn btn-primary" href="{{url_for('Fashion_mnist')}}">Fashion MNIST</a> -->
-      <a class="btn btn-primary" href="http://perceptrn.pythonanywhere.com/">Movie classifier</a>
+      <nav>
+        <a class="btn btn-primary" href="{{url_for('simpsons_word2vec')}}">word2vec</a>
+        <!-- <a class="btn btn-primary" href="{{url_for('Mnist')}}">Mnist</a> -->
+        <!-- <a class="btn btn-primary" href="{{url_for('Fashion_mnist')}}">Fashion MNIST</a> -->
+        <a class="btn btn-primary" href="http://perceptrn.pythonanywhere.com/">Movie classifier</a>
+      </nav>
 
         <form id="form">
             <div class="form-group">
-                <label>Enter text to predict topic<br />Topics are: <span class="badge badge-primary">atheism</span>, <span class="badge badge-primary">computer graphics</span>, <span class="badge badge-primary">christianity</span>, <span class="badge badge-primary">politics</span>, <span class="badge badge-primary">medical science</span></label>
-                <input name="text_field" id="text_field" style="height: 200px;" type="text" class="form-control"
-                    placeholder="Enter text here">
+                <label><br />Topics: <span class="badge badge-primary">atheism</span>, <span class="badge badge-primary">computer graphics</span>, <span class="badge badge-primary">christianity</span>, <span class="badge badge-primary">politics</span>, <span class="badge badge-primary">medical science</span></label>
+                <textarea name="text_field" id="text_field" type="text" class="form-control"
+                    placeholder="Enter text to predict topic" rows="5"></textarea>
     
             </div>
             <button id="button-a" type="button" class="btn btn-primary">

@@ -1,3 +1,15 @@
 body{
     background-image: url("img/1.jpg");
+    background-size: cover;
+    padding-top: 2rem;
+}
+
+nav {
+	margin-bottom: 1rem;
+	padding-bottom: .5rem;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	margin-bottom: 1rem;
 }

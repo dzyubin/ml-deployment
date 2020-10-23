@@ -14,8 +14,11 @@
     </head>
     <body style="background-image: url('https://c4.wallpaperflare.com/wallpaper/37/315/751/the-simpsons-homer-simpson-bart-simpson-wallpaper-preview.jpg');">
      
-    <div class="container" style="background: white; margin-top: 2rem; padding: 1rem;">
-      <a class="btn btn-primary" href="{{url_for('Homepage')}}">Home</a>
+    <div class="container" style="background: white; margin-top: 2rem; margin-bottom: 2rem; padding: 1rem;">
+      <nav>
+        <a class="btn btn-primary" href="{{url_for('Homepage')}}">Topic prediction</a>
+        <a class="btn btn-primary" href="http://perceptrn.pythonanywhere.com/">Movie classifier</a>
+      </nav>
       <h1>word2vec</h1>
       <div class="row">
         <form id="form" class="col-sm-8 form-inline">

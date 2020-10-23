@@ -13,8 +13,8 @@ import datetime
 import json
 
 # import mnist
-import word2vec
-from word2vec import Getmostsim
+import simpsons_word2vec
+from simpsons_word2vec import Getmostsim
 
 app = Flask(__name__)
 
@@ -73,7 +73,7 @@ def Fashion_mnist():
     return render_template('fashion_mnist.html')
 
 @app.route('/word2vec')
-def Word2vec():
+def simpsons_word2vec():
     return render_template('word2vec.html')
 
 @app.route('/get_most_similar', methods=['POST'])
