@@ -115,7 +115,10 @@ def Getmostsim(request):
     # prediction_name = prediction_map.get(str(prediction[0]), "couldn't find name")
 
     print(from_form)
-    most_similar = w2v_model.wv.most_similar(positive=[from_form])
+    try:
+        most_similar = w2v_model.wv.most_similar(positive=[from_form])
+    except KeyError as e: # thrown when searched word not in vocabulary
+        return str(e), 400
   
     response = {
         'status': 200,
@@ -125,3 +128,22 @@ def Getmostsim(request):
     # print(from_form)
     return jsonify(response)
     # return jsonify(['sdf'])
+
+def similarity(request):
+    from_form = request.form['words_to_compare']
+    print(from_form)
+    words = from_form.split(',')
+    print(words)
+
+    try:
+        similarity_score = w2v_model.wv.similarity(words[0].strip(), words[1].strip())
+    except KeyError as e: # thrown when searched word not in vocabulary
+        return str(e), 400
+  
+    response = {
+        'status': 200,
+        'prediction': str(similarity_score),
+        'created_at': datetime.datetime.now()
+    }
+
+    return jsonify(response)

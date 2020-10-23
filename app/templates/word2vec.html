@@ -14,63 +14,66 @@
     </head>
     <body style="background-image: url('https://c4.wallpaperflare.com/wallpaper/37/315/751/the-simpsons-homer-simpson-bart-simpson-wallpaper-preview.jpg');">
      
-    <div class="container" style="background: white; margin-top: 2rem; margin-bottom: 2rem; padding: 1rem;">
+    <div class="container" style="background: white; padding: 1rem; min-height: 90vh">
       <nav>
         <a class="btn btn-primary" href="{{url_for('Homepage')}}">Topic prediction</a>
         <a class="btn btn-primary" href="http://perceptrn.pythonanywhere.com/">Movie classifier</a>
       </nav>
       <h1>word2vec</h1>
       <div class="row">
-        <form id="form" class="col-sm-8 form-inline">
-          <div class="mb-3">
-            <div class="input-group">
-              <!-- <label for="most_similar_to" style="background: white;">Most similar to:</label> -->
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="validatedInputGroupPrepend">Most similar to:</span>
-              </div>
-              <input name="most_similar_to" id="most_similar_to" type="text" class="form-control" placeholder="e.g. Homer">
-              <!-- <button id="get_most_similar" class="btn btn-primary">Go</button> -->
-              <div class="input-group-append">
-                 <button id="get_most_similar" class="btn btn-primary" type="button">Go</button>
-              </div>
-            </div>
-          </div>
-          <div class="mb-3"><div id="most_similar_response" class="card col"></div></div>
-          <div class="mb-3">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="validatedInputGroupPrepend">Similarity score:</span>
-              </div>
-              <input name="similarity_score" id="similarity_score" type="text" class="form-control" placeholder="e.g. Homer, Marge">
-              <!-- <button id="get_similarity" class="btn btn-primary">Go</button> -->
-              <div class="input-group-append">
-                 <button id="get_similarity_score" class="btn btn-primary" type="button">Go</button>
+        <div class="col-sm-8">
+          <form id="form" class="form-inline row">
+            <div class="mb-3 col-sm-6">
+              <div class="input-group">
+                <!-- <label for="most_similar_to" style="background: white;">Most similar to:</label> -->
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="validatedInputGroupPrepend">Most similar to:</span>
+                </div>
+                <input name="most_similar_to" id="most_similar_to" type="text" class="form-control" placeholder="e.g. Homer">
+                <!-- <button id="get_most_similar" class="btn btn-primary">Go</button> -->
+                <div class="input-group-append">
+                   <button id="get_most_similar" class="btn btn-primary" type="button">Go</button>
+                </div>
               </div>
             </div>
-            <!-- <div class="input-group is-invalid">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="validatedInputGroupCustomFile" required>
-                <label class="custom-file-label" for="validatedInputGroupCustomFile">Choose file...</label>
+            <div class="mb-3 col-sm-6">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="validatedInputGroupPrepend">Similarity score:</span>
+                </div>
+                <input name="words_to_compare" id="words_to_compare" type="text" class="form-control" placeholder="e.g. Homer, Marge">
+                <!-- <button id="get_similarity" class="btn btn-primary">Go</button> -->
+                <div class="input-group-append">
+                   <button id="get_similarity_score" class="btn btn-primary" type="button">Go</button>
+                </div>
               </div>
-              <div class="input-group-append">
-                 <button class="btn btn-outline-secondary" type="button">Button</button>
-              </div>
+              <!-- <div class="input-group is-invalid">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="validatedInputGroupCustomFile" required>
+                  <label class="custom-file-label" for="validatedInputGroupCustomFile">Choose file...</label>
+                </div>
+                <div class="input-group-append">
+                   <button class="btn btn-outline-secondary" type="button">Button</button>
+                </div>
+              </div> -->
+            </div>
+            <div id="most_similar_response" class="mb-3 col-sm-6 col"></div>
+            <div id="similarity_score_response" class="mb-3 col-sm-6 col" style="align-self: start;"></div>
+            <!-- <div class="form-group">
+                <label>Enter text to predict topic<br />Topics are: atheism, computer graphics, christianity, politics, medical science</label>
+                <input name="text_field" id="text_field" style="height: 200px;" type="text" class="form-control"
+                    placeholder="Enter text here">
             </div> -->
-          </div>
-          <!-- <div class="form-group">
-              <label>Enter text to predict topic<br />Topics are: atheism, computer graphics, christianity, politics, medical science</label>
-              <input name="text_field" id="text_field" style="height: 200px;" type="text" class="form-control"
-                  placeholder="Enter text here">
-          </div> -->
-          <!-- <button id="button-a" type="button" class="btn btn-primary">
-            Submit
-            <div class="spinner-border" role="status" style="display: none;">
-              <span class="sr-only">Loading...</span>
-            </div>
-          </button> -->
-        </form>
-        <div class="card col-sm-4">
-          <div class="card-body">word2vec</div>
+            <!-- <button id="button-a" type="button" class="btn btn-primary">
+              Submit
+              <div class="spinner-border" role="status" style="display: none;">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </button> -->
+          </form>
+        </div>
+        <div class="card col-sm-4" style="height: 100%; border: none;">
+          <div class="card-body" style="border-left: 1px solid;">word2vec</div>
         </div>
       </div>
         <!-- <div class="card" style="width: 18rem; margin-top: 3rem;">
@@ -86,7 +89,7 @@
         </div> -->
     </div>
       <script>
-          $(document).ready(
+          /*$(document).ready(
             function(){
               $("#button-a").attr('disabled', true);
               $("#text_field").keyup(
@@ -125,7 +128,7 @@
                 $('.spinner-border').css('display', 'none')
               })
             }
-          );
+          );*/
           $("#get_most_similar").click(
             function(){
               $('.spinner-border').css('display', 'block')
@@ -150,7 +153,38 @@
                 console.log(err)
                 Swal.fire({
                   icon: 'error',
-                  title: err.statusText || 'Error',
+                  title: err.responseText || err.statusText || 'Error',
+                  showConfirmButton: true,
+                  timer: 20000
+                })
+              })
+              .always(function() {
+                $('.spinner-border').css('display', 'none')
+              })
+            }
+          );
+          $("#get_similarity_score").click(
+            function(){
+              $('.spinner-border').css('display', 'block')
+              $('#similarity_score_response').html('')
+              // console.log($('#words_to_compare'))
+              $.ajax({
+                url: "{{url_for('Getsimilarity')}}",
+                method: 'post',
+                data: {
+                  words_to_compare: $('#words_to_compare').val()
+                }
+              })
+              .done(function(res) {
+                console.log(res)
+                var similarity_score = res.prediction
+                $('#similarity_score_response').html(similarity_score)
+              })
+              .fail(function(err) {
+                console.log(err)
+                Swal.fire({
+                  icon: 'error',
+                  title: err.responseText || err.statusText || 'Error',
                   showConfirmButton: true,
                   timer: 20000
                 })

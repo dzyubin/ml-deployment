@@ -14,7 +14,7 @@ import json
 
 # import mnist
 import simpsons_word2vec
-from simpsons_word2vec import Getmostsim
+from simpsons_word2vec import Getmostsim, similarity
 
 app = Flask(__name__)
 
@@ -79,6 +79,10 @@ def simpsons_word2vec():
 @app.route('/get_most_similar', methods=['POST'])
 def Getmostsimilar():
     return Getmostsim(request)
+
+@app.route('/similarity_score', methods=['POST'])
+def Getsimilarity():
+    return similarity(request)
 
 if __name__=='__main__':
    app.run(debug=True)
