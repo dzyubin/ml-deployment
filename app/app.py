@@ -45,7 +45,7 @@ def Prediction():
   
     response = {
         'status': 200,
-        'prediction':prediction_name,
+        'prediction': prediction_name,
         'created_at': datetime.datetime.now()
     }
     return jsonify(response)

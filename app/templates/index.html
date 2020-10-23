@@ -22,32 +22,39 @@
         <a class="btn btn-primary" href="http://perceptrn.pythonanywhere.com/">Movie classifier</a>
       </nav>
 
-        <form id="form">
-            <div class="form-group">
-                <label><br />Topics: <span class="badge badge-primary">atheism</span>, <span class="badge badge-primary">computer graphics</span>, <span class="badge badge-primary">christianity</span>, <span class="badge badge-primary">politics</span>, <span class="badge badge-primary">medical science</span></label>
-                <textarea name="text_field" id="text_field" type="text" class="form-control"
-                    placeholder="Enter text to predict topic" rows="5"></textarea>
-    
-            </div>
-            <button id="button-a" type="button" class="btn btn-primary">
-              Submit
-              <div class="spinner-border" role="status" style="display: none;">
-                <span class="sr-only">Loading...</span>
-              </div>
-            </button>
+      <div class="row">
+        <form id="form" class="col-sm-8">
+          <div class="form-group">
+              <label><br />Topics: <span class="badge badge-primary">atheism</span>, <span class="badge badge-primary">computer graphics</span>, <span class="badge badge-primary">christianity</span>, <span class="badge badge-primary">politics</span>, <span class="badge badge-primary">medical science</span></label>
+              <textarea name="text_field" id="text_field" type="text" class="form-control"
+                  placeholder="Enter text to predict topic" rows="5"></textarea>
+          </div>
+          <button id="button-a" type="button" class="btn btn-primary">
+            Submit
+          </button>
         </form>
-
-        <div class="card" style="width: 18rem; margin-top: 3rem;">
+        <div class="col-sm-4 card">
           <div class="card-body">
-            <h5 class="card-title">Response</h5>
-            <p id="response" class="card-text">
-              No response yet...
-              <div class="spinner-border" role="status" style="display: none;">
-                <span class="sr-only">Loading...</span>
-              </div>
-            </p>
+            <div class="card-text">
+              CountVectorizer
+            </div>
           </div>
         </div>
+      </div>      
+
+      <div class="card" style="width: 18rem; margin-top: 3rem;">
+        <div class="card-body">
+          <h5 class="card-title" style="display: flex; justify-content: space-between;">
+            Response
+            <div class="spinner-border" role="status" style="display: none; width: 1rem; height: 1rem;">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </h5>
+          <p id="response" class="card-text">
+            No response yet...
+          </p>
+        </div>
+      </div>
     </div>
       <script>
           $(document).ready(
@@ -67,6 +74,7 @@
           $("#button-a").click(
             function(){
               $('.spinner-border').css('display', 'block')
+              $('#response').text('')
               $.ajax({
                 url: "{{url_for('Prediction')}}",
                 method: 'post',
