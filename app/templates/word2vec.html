@@ -72,9 +72,9 @@
             </button> -->
           </form>
         </div>
-        <div class="card col-sm-4" style="height: 100%; border: none;">
+        <!-- <div class="card col-sm-4" style="height: 100%; border: none;">
           <div class="card-body" style="border-left: 1px solid;">word2vec</div>
-        </div>
+        </div> -->
       </div>
         <!-- <div class="card" style="width: 18rem; margin-top: 3rem;">
           <div class="card-body">
@@ -144,7 +144,7 @@
                 var most_similar_string = ''
                 res.prediction.forEach(el => {
                   console.log(el)
-                  most_similar_string += `<p>${el[0]}: ${el[1]}</p>`
+                  most_similar_string += `<p>${el[0]}: ${el[1].toFixed(4)}</p>`
                 })
                 console.log(most_similar_string)
                 $('#most_similar_response').html(most_similar_string)
@@ -178,7 +178,7 @@
               .done(function(res) {
                 console.log(res)
                 var similarity_score = res.prediction
-                $('#similarity_score_response').html(similarity_score)
+                $('#similarity_score_response').html(parseFloat(similarity_score).toFixed(4))
               })
               .fail(function(err) {
                 console.log(err)
